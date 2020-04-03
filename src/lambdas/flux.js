@@ -10,7 +10,10 @@ exports.handler = async (event, context) => {
         "https://us-west-2-1.aws.cloud2.influxdata.com/api/v2/query?orgID=03b603ab272a3000",
         {
             method:"POST",
-            body:JSON.stringify({query})
+            body:JSON.stringify({query}),
+            headers: {
+              'Authorization': `Token ${process.env.INFLUX_TOKEN}`,
+            }
         })
 
     const data = await res.json()

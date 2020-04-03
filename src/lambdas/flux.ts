@@ -1,4 +1,5 @@
-const fetch = require('node-fetch').default
+import fetch from 'node-fetch'
+import {APIGatewayEvent, Context} from 'aws-lambda'
 
 const query = `
       from(bucket: "system_usage")
@@ -9,7 +10,7 @@ const query = `
         |> last()
         `
 
-exports.handler = async (event, context) => {
+exports.handler = async (event: APIGatewayEvent, context: Context) => {
   try {
     const payload = {
             method:"POST",

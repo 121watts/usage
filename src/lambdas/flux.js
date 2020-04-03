@@ -11,7 +11,7 @@ exports.handler = async (event, context) => {
             body:JSON.stringify({query})
         })
 
-    const data = res.json()
+    const data = await res.json()
     console.log('res: ', data)
 
     return {

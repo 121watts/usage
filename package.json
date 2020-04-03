@@ -1,0 +1,15 @@
+{
+  "name": "spike",
+  "version": "1.0.0",
+  "description": "spike for netlify lambda use",
+  "author": "Andrew Watkins <andrew.watkinz@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "netlify-lambda serve:lambda src/lambdas --port 1234",
+    "build": "netlify-lambda build:lambda src/lambdas"
+  },
+  "dependencies": {
+    "netlify-lambda": "^1.6.3",
+    "node-fetch": "^2.6.0"
+  }
+}

@@ -1,6 +1,13 @@
 const fetch = require('node-fetch').default
 
-const query = '\n    from(bucket: "system_usage")\n    |> range(start: -24h})\n    |> filter(fn: (r) => r._measurement == "storage_usage_org_cardinality"\n      and r._field == "gauge"\n      and r.org_id != "")\n    |> keep(columns: ["org_id", "_value"])\n    |> group(columns: ["org_id"], mode:"by")\n    |> last()\n'
+const query = `
+      from(bucket: "system_usage")
+        |> range(start: -24h)
+        |> filter(fn: (r) => r._measurement == "storage_usage_org_cardinality" and r._field == "gauge" and r.org_id != "")
+        |> keep(columns: ["org_id", "_value"])
+        |> group(columns: ["org_id"], mode:"by")
+        |> last()
+        `
 
 console.log('process.env', process.env)
 

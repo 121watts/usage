@@ -2,7 +2,7 @@ const fetch = require('node-fetch').default
 
 const query = `
       from(bucket: "system_usage")
-        |> range(start: -24h)
+        |> range(start: -1m)
         |> filter(fn: (r) => r._measurement == "storage_usage_org_cardinality" and r._field == "gauge" and r.org_id != "")
         |> keep(columns: ["org_id", "_value"])
         |> group(columns: ["org_id"], mode:"by")

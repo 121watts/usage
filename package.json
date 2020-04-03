@@ -8,11 +8,19 @@
     "start:lambda": "netlify-lambda serve src/lambdas --port 1234",
     "build:lambda": "netlify-lambda build src/lambdas"
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-typescript"
+    ]
+  },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.47",
     "@types/node-fetch": "^2.5.5"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
     "aws-lambda": "^1.0.5",
     "encoding": "^0.1.12",
     "netlify-lambda": "^1.6.3",

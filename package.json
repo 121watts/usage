@@ -5,8 +5,8 @@
   "author": "Andrew Watkins <andrew.watkinz@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "netlify-lambda serve:lambda src/lambdas --port 1234",
-    "build": "netlify-lambda build:lambda src/lambdas"
+    "start:build": "netlify-lambda serve src/lambdas --port 1234",
+    "build:build": "netlify-lambda build src/lambdas"
   },
   "dependencies": {
     "netlify-lambda": "^1.6.3",

@@ -5,7 +5,7 @@ const query = '\n    from(bucket: "system_usage")\n    |> range(start: -24h})\n 
 exports.handler = async (event, context) => {
   try {
     const res = await fetch(
-        "https://us-west-2-1.aws.cloud2.influxdata.com/api/v2/query",
+        "https://us-west-2-1.aws.cloud2.influxdata.com/api/v2/query?orgID=03b603ab272a3000",
         {
             method:"POST",
             body:JSON.stringify({query})

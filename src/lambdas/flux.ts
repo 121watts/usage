@@ -22,14 +22,14 @@ exports.handler = async (event: APIGatewayEvent, context: Context) => {
         }
 
     const url = "https://us-west-2-1.aws.cloud2.influxdata.com/api/v2/query?orgID=03b603ab272a3000"
-
-    console.log('payload', payload)
-
     const res = await fetch(url, payload)
 
     if (!res.ok) {
       throw new Error('problem with request')
     }
+
+    console.log('logging resp: ', res)
+
     const data = await res.text()
 
     return {

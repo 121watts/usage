@@ -9,6 +9,7 @@
     "build:lambda": "netlify-lambda build src/lambdas"
   },
   "dependencies": {
+    "encoding": "^0.1.12",
     "netlify-lambda": "^1.6.3",
     "node-fetch": "^2.6.0"
   }

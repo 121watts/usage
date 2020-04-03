@@ -11,11 +11,11 @@ exports.handler = async (event, context) => {
             body:JSON.stringify({query})
         })
 
-    const data = await res.json()
+    console.log('res: ', res)
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ data })
+      body: JSON.stringify({ res })
     }
 
   } catch (err) {

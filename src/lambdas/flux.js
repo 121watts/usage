@@ -9,8 +9,6 @@ const query = `
         |> last()
         `
 
-console.log('process.env', process.env)
-
 exports.handler = async (event, context) => {
   try {
     const payload = {
@@ -21,6 +19,7 @@ exports.handler = async (event, context) => {
               'Content-Type': 'application/json'
             }
         }
+
     const url = "https://us-west-2-1.aws.cloud2.influxdata.com/api/v2/query?orgID=03b603ab272a3000"
 
     console.log('payload', payload)
@@ -30,7 +29,7 @@ exports.handler = async (event, context) => {
     if (!res.ok) {
       throw new Error('problem with request')
     }
-    const data = await res.json()
+    const data = await res.text()
 
     return {
       statusCode: 200,

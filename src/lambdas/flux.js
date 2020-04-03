@@ -4,18 +4,19 @@ const query = '\n    from(bucket: "system_usage")\n    |> range(start: -24h})\n 
 
 exports.handler = async (event, context) => {
   try {
-    const res = fetch(
+    const res = await fetch(
         "https://us-west-2-1.aws.cloud2.influxdata.com/api/v2/query",
         {
             method:"POST",
             body:JSON.stringify({query})
         })
 
-    console.log('res: ', res)
+    const data = res.json()
+    console.log('res: ', data)
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ res })
+      body: JSON.stringify({ data })
     }
 
   } catch (err) {

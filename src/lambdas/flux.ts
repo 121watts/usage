@@ -1,16 +1,14 @@
 import fetch from 'node-fetch'
 import {APIGatewayEvent, Context} from 'aws-lambda'
 
-const query = `
-      from(bucket: "system_usage")
-        |> range(start: -1m)
-        |> filter(fn: (r) => r._measurement == "storage_usage_org_cardinality" and r._field == "gauge" and r.org_id != "")
-        |> keep(columns: ["org_id", "_value"])
-        |> group(columns: ["org_id"], mode:"by")
-        |> last()
-        `
-
 exports.handler = async (event: APIGatewayEvent, context: Context) => {
+  let body = {query: ''}
+  if (event.body) {
+    body = JSON.parse(event.body)
+  }
+
+  const {query} = body
+
   try {
     const payload = {
             method:"POST",
@@ -28,13 +26,11 @@ exports.handler = async (event: APIGatewayEvent, context: Context) => {
       throw new Error('problem with request')
     }
 
-    console.log('logging resp: ', res)
-
     const data = await res.text()
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ data })
+      body: JSON.stringify({ data, whatYouSent: body })
     }
 
   } catch (err) {

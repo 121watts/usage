@@ -5,6 +5,7 @@
   "author": "Andrew Watkins <andrew.watkinz@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "dev": "yarn build:lambda && netlify dev",
     "start:lambda": "netlify-lambda serve src/lambdas --port 1234",
     "build:lambda": "netlify-lambda build src/lambdas"
   },
@@ -19,6 +20,7 @@
     "@types/node-fetch": "^2.5.5"
   },
   "dependencies": {
+    "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-typescript": "^7.9.0",
     "aws-lambda": "^1.0.5",
